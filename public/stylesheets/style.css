@@ -28,23 +28,15 @@ a {
   border: solid orange 1px;
 }
 
-.footer {
-  grid-area: footer;
-  grid-row: 3;
-  grid-column: 2;
-  border: solid black 1px;
-}
-
 .grid-container {
   display: grid;
   width: 100vw;
   margin: 0px;
-  grid-template-rows: 0.25fr 5fr 0.25fr;
+  grid-template-rows: 0.25fr 5fr;
   grid-template-columns: 0.75fr 5fr;
   grid-template-areas: 
     "header header"
-    "nav main"
-    "nav footer";    
+    "nav main";    
   height: 100vh;
   overflow: hidden;
 }
