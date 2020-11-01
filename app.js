@@ -7,17 +7,18 @@ var bodyParser = require('body-parser');
 
 // Add Mongoose for MongoDB
 var mongoose = require('mongoose').set('debug', true);
-mongoose.Promise = global.Promise;
 
 // Set Mongoose Options
 const options = {
     useNewUrlParser: true,
     useUnifiedTopology: true,
-    useCreateIndex: true
+    useCreateIndex: true,
+    user: "ryan",
+    pass: ""
   }
 
 // Connect to MongoDB Server
-mongoose.connect('mongodb://ryan:7926Sacjdm*7926@192.168.1.135:27017/Papers?authSource=admin', options)
+mongoose.connect('mongodb://192.168.1.135:27017/Papers?authSource=admin', options)
 .then(() => console.log( 'Database Connected!' ))
 .catch(err => console.log( err ));
 
