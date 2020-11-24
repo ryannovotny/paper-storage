@@ -11,21 +11,36 @@ a {
   grid-area: header;
   grid-row: 1;
   grid-column: 1 / span 2;
-  border: solid red 1px;
+  box-shadow: 1px 1px 5px rgb(85, 85, 85, 0.75);
 }
 
-.nav {
-  grid-area: nav;
-  grid-row: 2 / span 3;
-  grid-column: 1; 
-  border: solid blue 1px;
+pad-left {
+  grid-area: pad-left;
+  grid-row: 2;
+  grid-column: 1;
+  box-shadow: 1px 1px 5px rgba(85, 85, 85, 0.75);
+}
+
+pad-right {
+  grid-area: pad-right;
+  grid-row: 1 / span 2;
+  grid-column: 3;
+  box-shadow: 1px 1px 5px rgba(85, 85, 85, 0.75);
+}
+
+.navbar {
+  height: 100%;
+  padding: .5rem 0rem;
 }
 
 .main {
   grid-area: main;
   grid-row: 2;
   grid-column: 2;
-  border: solid orange 1px;
+  box-shadow: 1px 1px 5px rgb(85, 85, 85, 0.75);
+  border-radius: 4px;
+  border: solid #ccc 1px;
+  margin: 5px;
 }
 
 .grid-container {
@@ -33,10 +48,77 @@ a {
   width: 100vw;
   margin: 0px;
   grid-template-rows: 0.25fr 5fr;
-  grid-template-columns: 0.75fr 5fr;
+  grid-template-columns: 0.25fr 5fr 0.25fr;
   grid-template-areas: 
-    "header header"
-    "nav main";    
+    "header header pad-right"
+    "pad-left main pad-right";    
   height: 100vh;
   overflow: hidden;
+}
+
+/* Top Search Bar */
+.search-parent-width {
+  width: 100%;
+}
+
+.search-width {
+  width: 50%;
+  margin-left: auto;
+}
+
+.search-box {
+  width: 100% !important;
+}
+
+.button-margin {
+  margin-right: auto;
+}
+
+
+
+
+
+
+.dropdown-submenu {
+  position: relative;
+}
+
+.dropdown-submenu > .dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: 4px;
+  border-radius: 0 6px 6px 6px;
+}
+
+.dropdown-submenu:hover > .dropdown-menu {
+  display: block;
+}
+
+.dropdown-submenu > a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #ccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+
+.dropdown-submenu:hover > a:after {
+  border-left-color: #fff;
+}
+
+.dropdown-submenu.pull-left {
+  float: none;
+}
+
+.dropdown-submenu.pull-left > .dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
 }
