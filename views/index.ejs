@@ -8,11 +8,49 @@
   </head>
   <body>
     <div class="grid-container">
-      <header class="header" id="header"></header>
-      <nav class="nav" id="nav"></nav>
+
+      <!-- Set Page Header -->
+      <header class="header" id="header">
+        <div class="navbar navbar-expand-lg navbar-dark bg-dark">
+          <form class="form-inline search-parent-width" onsubmit="return getSearchResults();">
+            <a class="navbar-brand">Paper Storage</a>
+            <!-- Search Bar -->
+            <div class="form-group search-width">
+              <label for="inputSearch" class="sr-only">Search</label>
+              <input type="text" class="form-control search-box mr-sm-2" id="searchInput" placeholder="Search...">
+            </div>
+
+            <!-- Search Button & Options -->
+            <div class="btn-group button-margin">
+              <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
+              <button type="button" class="btn btn-outline-light dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
+              <ul class="dropdown-menu multi-level" role="menu" aria-labelledby="dropdownMenu">
+                <li class="dropdown-item"><a>Filter</a></li>
+                <li class="dropdown-submenu">
+                  <a class="dropdown-item">Sort By...</a>
+                  <ul class="dropdown-menu">
+                    <li class="dropdown-item"><a>Title</a></li>
+                    <li class="dropdown-item"><a>Authors</a></li>
+                    <li class="dropdown-item"><a>Journal</a></li>
+                    <li class="dropdown-item"><a>Topic</a></li>
+                    <li class="dropdown-item"><a>DOI</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+          </form>
+        </div>
+      </header>
+
+      <!-- Set Page Side Panel -->
+      <pad-left class="nav bg-dark" id="pad"></pad-left>
+      <pad-right class="nav bg-dark" id="pad"></pad-right>
+
+      <!-- Set Page Main Content -->
       <main class="main" id="main">
         <table id="itemContentMain"></table>
       </main>
+      
     </div>
     
     <script src="/jquery/jquery.min.js"></script>
