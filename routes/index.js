@@ -22,4 +22,7 @@ router.get('/remove', function(req, res) {
 // Get all items
 router.get('/list', paper.list);
 
+// Search for items
+router.get('/search', paper.search);
+
 module.exports = router;
