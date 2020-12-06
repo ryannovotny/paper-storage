@@ -4,7 +4,7 @@ var Papers = mongoose.model("Papers");
 
 var PapersController = {};
 
-// Show list of all items
+// Return List of All Items
 PapersController.list = function (req, res) {
   Papers.find({ "title": { $exists: true } },
     function (err, papers) {
@@ -18,7 +18,7 @@ PapersController.list = function (req, res) {
     });
 };
 
-// Search for papers
+// Return List of Items that Match Search Query
 PapersController.search = function (req, res) {
   var regexEx = new RegExp(req.query.srch, "i");
   Papers.find(
