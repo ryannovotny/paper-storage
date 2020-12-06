@@ -1,62 +1,96 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <link rel="stylesheet" href="stylesheets/style.css" type="text/css">
-    <link rel="stylesheet" href="/bs-table/bootstrap-table.min.css">
-    <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/fontawesome/css/all.min.css">
-  </head>
-  <body>
-    <div class="grid-container">
 
-      <!-- Set Page Header -->
-      <header class="header" id="header">
-        <div class="navbar navbar-expand-lg navbar-dark bg-dark">
-          <form class="form-inline search-parent-width" onsubmit="return getSearchResults();">
-            <a class="navbar-brand">Paper Storage</a>
-            <!-- Search Bar -->
-            <div class="form-group search-width">
-              <label for="inputSearch" class="sr-only">Search</label>
-              <input type="text" class="form-control search-box mr-sm-2" id="searchInput" placeholder="Search...">
-            </div>
+<head>
+  <link rel="stylesheet" href="stylesheets/style.css" type="text/css">
+  <link rel="stylesheet" href="/bs-table/bootstrap-table.min.css">
+  <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/fontawesome/css/all.min.css">
+</head>
 
-            <!-- Search Button & Options -->
-            <div class="btn-group button-margin">
-              <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
-              <button type="button" class="btn btn-outline-light dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
-              <ul class="dropdown-menu multi-level" role="menu" aria-labelledby="dropdownMenu">
-                <li class="dropdown-item"><a>Filter</a></li>
-                <li class="dropdown-submenu">
-                  <a class="dropdown-item">Sort By...</a>
-                  <ul class="dropdown-menu">
-                    <li class="dropdown-item"><a>Title</a></li>
-                    <li class="dropdown-item"><a>Authors</a></li>
-                    <li class="dropdown-item"><a>Journal</a></li>
-                    <li class="dropdown-item"><a>Topic</a></li>
-                    <li class="dropdown-item"><a>DOI</a></li>
-                  </ul>
+<body>
+  <div class="grid-container">
+    <!-- Set Page Header -->
+    <header class="header" id="header">
+      <div class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <form class="form-inline search-parent-width" onsubmit="return getSearchResults();">
+          <a class="navbar-brand">Paper Storage</a>
+          <!-- Search Bar -->
+          <div class="form-group search-width">
+            <label for="inputSearch" class="sr-only">Search</label>
+            <input type="text" class="form-control search-box mr-sm-2" id="searchInput" placeholder="Search...">
+          </div>
+
+          <!-- Search Button & Options -->
+          <div class="btn-group button-margin">
+            <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
+            <!-- 
+                -->
+          </div>
+        </form>
+      </div>
+    </header>
+
+    <!-- Set Page Side Panel -->
+    <side class="sidebar bg-dark" id="sidebar">
+      <div class="page-wrapper chiller-theme toggled">
+        <div class="sidebar-wrapper">
+          <div class="sidebar-content">
+            <div class="sidebar-menu">
+              <ul>
+                <li class="header-menu">
+                  <span>Filter</span>
+                </li>
+                <li class="sidebar-dropdown">
+                  <a><i class="fas fa-book"></i><span>Journal</span></a>
+                  <div class="sidebar-submenu">
+                    <ul>
+                      <li><a data-target="#editModal">First Journal</a></li>
+                      <li><a data-target="#editModal">Second Journal</a></li>
+                    </ul>
+                  </div>
+                </li>
+                <li class="sidebar-dropdown">
+                  <a><i class="fas fa-user"></i><span>Lead Author</span></a>
+                  <div class="sidebar-submenu">
+                    <ul>
+                      <li><a data-target="#editModal">First Author</a></li>
+                      <li><a data-target="#editModal">Second Author</a></li>
+                    </ul>
+                  </div>
+                </li>
+                <li class="header-menu">
+                  <span>Modify</span>
+                </li>
+                <li class="sidebar-dropdown-link">
+                  <a><i class="fas fa-plus-square"></i><span>Add Paper</span></a>
+                </li>
+                <li class="sidebar-dropdown-link">
+                  <a><i class="fas fa-trash-alt"></i><span>Remove Paper</span></a>
+                </li>
+                <li class="sidebar-dropdown-link">
+                  <a href="javascript:getAllItems()">
+                    <i class="fas fa-th-list"></i><span>Show All Items</span>
+                  </a>
                 </li>
               </ul>
             </div>
-          </form>
+          </div>
         </div>
-      </header>
+      </div>
+    </side>
 
-      <!-- Set Page Side Panel -->
-      <pad-left class="nav bg-dark" id="pad"></pad-left>
-      <pad-right class="nav bg-dark" id="pad"></pad-right>
+    <!-- Set Page Main Content -->
+    <main class="main" id="main">
+      <table id="itemContentMain"></table>
+    </main>
+  </div>
 
-      <!-- Set Page Main Content -->
-      <main class="main" id="main">
-        <table id="itemContentMain"></table>
-      </main>
-      
-    </div>
-    
-    <script src="/jquery/jquery.min.js"></script>
-    <script src="/bootstrap/js/bootstrap.min.js"></script>
-    <script src="/bs-table/bootstrap-table.min.js"></script>
-    <script src="/popper/popper.min.js"></script>
-    <script src="/javascripts/scripts.js"></script>
-  </body>
+  <script src="/jquery/jquery.min.js"></script>
+  <script src="/bootstrap/js/bootstrap.min.js"></script>
+  <script src="/bs-table/bootstrap-table.min.js"></script>
+  <script src="/popper/popper.min.js"></script>
+  <script src="/javascripts/scripts.js"></script>
+</body>
+
 </html>

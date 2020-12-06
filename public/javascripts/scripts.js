@@ -2,36 +2,47 @@
 function getSearchResults() {
     var query = $("#searchInput").val();
 
-    if(query === '') {
+    if (query === '') {
         return false;
     } else {
         $.ajax({
             url: 'search?srch=' + encodeURIComponent(query),
             type: 'GET',
             dataType: 'json',
-            success: function(result) {
-                $('#itemContentMain').bootstrapTable({data: result});
+            success: function (result) {
+                $('#itemContentMain').bootstrapTable({ data: result });
                 $('#itemContentMain').bootstrapTable('load', result);
+
+                var table = document.getElementById('itemContentMain');
+                var rows = table.getElementsByTagName('tr');
+                $(rows).click(function () {
+                    /* $('.detail-view').remove(); */
+                    $(rows).removeClass('table-active');
+                    $(this).addClass('table-active');
+                });
             }
-        }).fail(function (xhr, ajaxOptions, thrownError){
+        }).fail(function (xhr, ajaxOptions, thrownError) {
             alert("The search failed to return results: " + thrownError);
         });
     }
     return false;
 }
 
-function detailFormatter(index, row) {
-    var html = []
-    $.each(row, function (key, value) {
-      html.push('<p><b>' + key + ':</b> ' + value + '</p>')
-    })
-    return html.join('')
+function detailFormatter(row, value) {
+    var html = [];
+    html.push('<div class="card">' +
+        '<div class="card-body">' +
+        '<h5 class="card-title">Abstract</h5>' +
+        '<p class="card-text">' + value.abstract + '</p>' +
+        '</div>' +
+        '</div>');
+    return html.join('');
 }
 
 // Author Listing Formatter
 function authorFormatter(value) {
     string = "";
-    for(i = 0; i < value.length - 1; i++) {
+    for (i = 0; i < value.length - 1; i++) {
         string = string + value[i] + ", ";
     }
     string = string + value[i];
@@ -57,10 +68,10 @@ function dateFormatter(value) {
 }
 
 // On Document Ready
-$(document).ready(function() {
+$(document).ready(function () {
     // Set the item table
     var $table = $('#itemContentMain');
-    
+
     // Activate the table and set controls
     $table.bootstrapTable({
         classes: "table table-hover",
@@ -68,34 +79,61 @@ $(document).ready(function() {
         detailViewByClick: true,
         detailFormatter: "detailFormatter",
         detailViewIcon: false,
-        columns: [ {
+        clickToSelect: true,
+        columns: [{
             field: "title",
             title: "Title",
             widthUnit: "%",
-            width: "30" },
+            width: "30"
+        },
         {
             field: "authors",
             title: "Authors",
             formatter: "authorFormatter",
             widthUnit: "%",
-            width: "20" },
+            width: "20"
+        },
         {
             field: "journal",
             title: "Journal",
             widthUnit: "%",
-            width: "20" },
+            width: "20"
+        },
         {
             field: "doi",
             title: "DOI Link",
             formatter: "linkFormatter",
             widthUnit: "%",
-            width: "15" },
+            width: "15"
+        },
         {
             field: "published",
             title: "Publish Date",
             formatter: "dateFormatter",
             widthUnit: "%",
-            width: "15" }
+            width: "15"
+        }
         ]
+    });
+
+    $(".sidebar-dropdown > a").click(function () {
+        // When an item is clicked, expand the menu (and opposite)
+        if ($(this).parent().hasClass("active")) {
+            $(this).next(".sidebar-submenu").slideUp(200);
+            $(this).parent().removeClass("active");
+        } else {
+            $(this).next(".sidebar-submenu").slideDown(200);
+            $(this).parent().addClass("active");
+        }
+    });
+
+    // Open link on sidebar or get subcategory items if no link
+    $(".sidebar-submenu > ul > li > a").click(function () {
+        if ($(this).hasClass("active")) {
+            $(this).removeClass("active");
+        }
+        else {
+            $(this).addClass("active");
+        }
     });
 });
